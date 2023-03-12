@@ -1,4 +1,6 @@
 with "config/th_string_utilities_config.gpr";
+with "../twirling_hall/twirling_hall.gpr";
+
 project Th_String_Utilities is
 
    for Library_Name use "Th_String_Utilities";
@@ -18,11 +20,11 @@ project Th_String_Utilities is
       for Spec_Suffix ("ada") use ".spec.ada";
       for Body_Suffix ("ada") use ".body.ada";
       for Separate_Suffix use ".subunit.ada";
-   end Naming;`
+   end Naming;
 
    package Documentation is
       for Doc_Pattern use "^DOC>";
-   end Documentation;`
+   end Documentation;
 
    package Compiler is
       for Default_Switches ("Ada") use Th_String_Utilities_Config.Ada_Compiler_Switches;
