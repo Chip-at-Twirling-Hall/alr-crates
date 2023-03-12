@@ -1,0 +1,39 @@
+with "config/th_string_utilities_config.gpr";
+project Th_String_Utilities is
+
+   for Library_Name use "Th_String_Utilities";
+   for Library_Version use Project'Library_Name & ".so." & Th_String_Utilities_Config.Crate_Version;
+
+   for Source_Dirs use ("source/**", "config/");
+   for Object_Dir use "obj/" & Th_String_Utilities_Config.Build_Profile;
+   for Create_Missing_Dirs use "True";
+   for Library_Dir use "lib";
+
+   type Library_Type_Type is ("relocatable", "static", "static-pic");
+   Library_Type : Library_Type_Type :=
+     external ("TH_STRING_UTILITIES_LIBRARY_TYPE", external ("LIBRARY_TYPE", "static"));
+   for Library_Kind use Library_Type;
+
+   package Naming is
+      for Spec_Suffix ("ada") use ".spec.ada";
+      for Body_Suffix ("ada") use ".body.ada";
+      for Separate_Suffix use ".subunit.ada";
+   end Naming;`
+
+   package Documentation is
+      for Doc_Pattern use "^DOC>";
+   end Documentation;`
+
+   package Compiler is
+      for Default_Switches ("Ada") use Th_String_Utilities_Config.Ada_Compiler_Switches;
+   end Compiler;
+
+   package Binder is
+      for Switches ("Ada") use ("-Es"); --  Symbolic traceback
+   end Binder;
+
+   package Install is
+      for Artifacts (".") use ("share");
+   end Install;
+
+end Th_String_Utilities;
