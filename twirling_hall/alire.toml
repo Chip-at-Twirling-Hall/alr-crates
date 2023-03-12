@@ -1,0 +1,7 @@
+name = "twirling_hall"
+description = "Shiny new project"
+version = "0.1.0-dev"
+
+authors = ["Chip Staples"]
+maintainers = ["Chip Staples <chip@twirling-hall.com>"]
+maintainers-logins = ["Chip-at-Twirling-Hall"]
